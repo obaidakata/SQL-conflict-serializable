@@ -16,3 +16,4 @@ class DirectedGraph:
         for firstVertex in self.adjacencyLists:
             for secondVertex in self.adjacencyLists[firstVertex]:
                 print(firstVertex, ",",secondVertex)
+
