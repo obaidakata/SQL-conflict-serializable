@@ -12,15 +12,11 @@ class DirectedGraph:
         else:
             print("Error 1")
 
-    def print(self):
-        for firstVertex in self.adjacencyLists:
-            for secondVertex in self.adjacencyLists[firstVertex]:
-                print(firstVertex, ",",secondVertex)
-
     def topologicalSort(self):
         queue = []
         outputList = []
         inDegree = {}
+        str = ''
         for vertex in self.adjacencyLists:
             inDegree[vertex] = 0
 
@@ -42,10 +38,13 @@ class DirectedGraph:
 
         for vertex in self.adjacencyLists:
             if inDegree[vertex] != 0:
-                print("Cycle detected")
+                print("No, cycle detected")
                 return False
 
         for x in outputList:
-            print(x)
+            str += "T{0} ".format(x)
+            if x != outputList[-1]:
+                str += "-> "
+        print(str)
 
         return True
