@@ -24,6 +24,7 @@ class SQLConflictSerializable:
         verticesList = self.getVerticesList()
         self.graph = DirectedGraph(verticesList)
         self.addEdgesToGraph()
+        self.graph.topologicalSort()
         self.graph.print()
 
     def initOperations(self):
@@ -46,8 +47,8 @@ class SQLConflictSerializable:
 
     def getUserInput(self):
         # self.userInput = input("Please type your transactions list")
-        # self.userInput = "R2(A);R1(B);W2(A);R2(B);R3(A);W1(B);W3(A);W2(B)"
-        self.userInput = "R2(A);R1(B);W2(A);R3(A);W1(B);W3(A);R2(B);W2(B)"
+        self.userInput = "R2(A);R1(B);W2(A);R2(B);R3(A);W1(B);W3(A);W2(B)"
+        # self.userInput = "R2(A);R1(B);W2(A);R3(A);W1(B);W3(A);R2(B);W2(B)"
 
     def addEdgesToGraph(self):
         numberOfOperand = len(self.operations)
